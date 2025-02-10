@@ -1,5 +1,4 @@
 import { motion, useAnimation, useInView, useScroll, useTransform } from "motion/react"
-import { svg } from "motion/react-client"
 import { useEffect, useRef } from "react"
 
 const gridContainerVariants = {
@@ -19,7 +18,6 @@ const svgIconVariants = {
   hidden: { opacity: 0, pathLength: 0, fill: 'rgba(252, 211, 77, 0)'},
   visible: { opacity: 1, pathLength: 1, fill: "rgba(252, 211, 77, 1)"}
 }
-
 
 function App() {
   const { scrollYProgress: completionProgress } = useScroll()
@@ -53,7 +51,7 @@ function App() {
   }, [isInView])
 
   return (
-    <div className='card-container'>
+    <>
       <motion.section 
         variants={ 
           gridContainerVariants
@@ -187,32 +185,29 @@ function App() {
           initial="hidden"
           variants={{
             hidden: { opacity: 0, y: 75 },
-            visible: {
-              opacity: 1,
-              y: 0,
-            },
+            visible: { opacity: 1, y: 0 },
           }}
           transition={{ delay: 0.3 }}
         >
           Just Keep Scrolling
         </motion.h1>
+        
         <motion.p
           style={{ translateX: paragraphOneValue }}
           className="text-slate-100 font-thin text-4xl w-1/2 mx-auto"
         >
-          This is a basic tutorial on how to get up and running with Framer
-          Motion with some TailwindCSS. If you enjoyed this video, please leave
-          a like and also subscribe.
+          This is a basic tutorial on how to get up and running with Framer Motion with some TailwindCSS. If you enjoyed this video, please leave a like and also subscribe.
         </motion.p>
+
         <motion.p
           style={{ translateX: paragraphTwoValue }}
           className="text-slate-100 font-thin text-4xl w-1/2 mx-auto"
         >
-          Have fun playing with Framer Motion. It is a very powerful library,
-          when used properly. Add some life to your websites.
+          Have fun playing with Framer Motion. It is a very powerful library, when used properly. Add some life to your websites.
         </motion.p>
+
       </section>
-    </div>
+    </>
   )
 }
 
